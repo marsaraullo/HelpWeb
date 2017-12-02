@@ -2,9 +2,7 @@
   <div class="content-wrapper">
   <!-- Content Header (Page header) -->
   <section class="content-header">
-    <h1>
-    Job Posts
-    </h1>
+    <h1>Job Posts</h1>
     <ol class="breadcrumb">
       <li class="active">Job Posts</li>
     </ol>
@@ -31,6 +29,7 @@
                                 <th width="10%">Actual cost</th>
                                 <th width="10%" class="hidden-xs hidden-sm">Max cost</th>
                                 <th width="10%" class="hidden-xs hidden-sm">Asker</th>
+                                <th width="10%" class="hidden-xs hidden-sm">Status</th>
                                 <th width="5%">Action</th>
                             </tr>
                         </thead>
@@ -62,6 +61,7 @@ load_unseen_notification();
           {data:'actual_cost'},
           {data:'max_cost', className:"hidden-xs hidden-sm"},
           {data:'asker_id', className:"hidden-xs hidden-sm"},
+          {data:'status', className:"hidden-xs hidden-sm"},
           {data:'action'}
       ]
   });

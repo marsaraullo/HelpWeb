@@ -87,14 +87,10 @@
     <?php
         echo $this->userlogin->check_assigned_controllers_access('Dashboard', array(1 => 'Dashboard'), 'fa fa-dashboard');
         echo $this->userlogin->check_assigned_controllers_access('Job Posts', array(2 => 'Job Posts'), 'fa fa-paperclip');
-        echo $this->userlogin->check_assigned_controllers_access('Job Comments', array(3 => 'Job Comments'), 'fa fa-comment');
-        echo $this->userlogin->check_assigned_controllers_access('Notifications', array(4 => 'Notifications'), 'fa fa-bell');        
         echo $this->userlogin->check_assigned_controllers_access('Users', array(5 => 'Users'), 'fa fa-users');  
-        echo $this->userlogin->check_assigned_controllers_access('Roles', array(6 => 'Roles'), 'fa fa-user-circle');
-        //echo $this->userlogin->check_assigned_controllers_access('Modules', array(7 => 'Modules'), 'fa fa-cubes');      
+        echo $this->userlogin->check_assigned_controllers_access('Roles', array(6 => 'Roles'), 'fa fa-user-circle');      
         echo $this->userlogin->check_assigned_controllers_access('Home', array(8 => 'Home'), 'fa fa-home');
-        echo $this->userlogin->check_assigned_controllers_access('Job Posts', array(9 => 'Job Posts'), 'fa fa-paperclip'); 
-        echo $this->userlogin->check_assigned_controllers_access('Notifications', array(10 => 'Notifications'), 'fa fa-bell');       
+        echo $this->userlogin->check_assigned_controllers_access('Job Posts', array(9 => 'Job Posts'), 'fa fa-paperclip');       
         ?>
     </ul>
   </section>

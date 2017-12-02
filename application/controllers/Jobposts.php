@@ -91,7 +91,20 @@ class Jobposts extends CI_Controller {
 		$this->load->view('layouts/sidebar');
 		$this->load->view('jobposts/job',$data);
 		$this->load->view('layouts/footer');
-    }	
+	}	
+	
+	function accept_applicant($job_id,$user_id){
+		if($job_id !=="" && $user_id !==""){
+			$this->db->where('id',$job_id);
+			$this->db->update('jobposts',array('helper_id' => $user_id));
+			sleep(1);
+			$this->db->where('job_id',$job_id);
+			$this->db->delete('applicants');
+			redirect(site_url().'/jobposts/job/'.$job_id);
+		}else{
+			redirect(site_url().'/jobposts/job/'.$job_id);
+		}
+	}
 
     
 }

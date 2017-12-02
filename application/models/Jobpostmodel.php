@@ -120,6 +120,11 @@ class Jobpostmodel extends CI_Model {
         foreach ($results->result_array() as $key => $row) {
             $result = $this->db->get_where('users',array('id'=>$row['asker_id']));
             $result2 = $result->row();
+            if($row['helper_id']==""){
+                $status = '<i class="fa fa-square text-green"></i> Open';
+            }else{
+                $status = '<i class="fa fa-square text-red"></i> Closed';
+            }
             $data['data'][] = array('id' => $row['id'],
                 'datetime' => $row['datetime'],
                 'title' => $row['title'],
@@ -127,9 +132,10 @@ class Jobpostmodel extends CI_Model {
                 'actual_cost' => $row['actual_cost'],
                 'max_cost' => $row['max_cost'],
                 'asker_id' => $result2->lastname.', '.$result2->firstname,
-                'action' => '<a href="javascript:view_record(\''.$row['id'].'\')" title="View" class="btn btn-info btn-xs"><i class="fa fa-list-alt"></i></a>'
+                'status' => $status,
+                'action' => '<a href="jobposts/job/'.$row['id'].'" title="Applicants" class="btn btn-success btn-xs"><i class="fa fa-users"></i></a>'
+                . '&nbsp;&nbsp;<a href="javascript:view_record(\''.$row['id'].'\')" title="View" class="btn btn-info btn-xs"><i class="fa fa-list-alt"></i></a>'
                 . '&nbsp;&nbsp;<a href="javascript:update_record(\''.$row['id'].'\')" title="Update" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>'
-                . '&nbsp;&nbsp;<a href="jobposts/job/'.$row['id'].'" title="Applicants" class="btn btn-success btn-xs"><i class="fa fa-users"></i></a>'
                 . '&nbsp;&nbsp;<a href="javascript:delete_record(\''.$row['id'].'\')" title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-times-circle"></i></a>');
         }
         return json_encode($data);
@@ -154,5 +160,17 @@ class Jobpostmodel extends CI_Model {
         $result = $this->db->get();     
         return $result->result();   
     }
+
+    function count_all_open(){
+        $result = $this->db->get_where('jobposts',array('helper_id' => ''));
+        return $result->num_rows();
+    }
+
+    function count_all_closed(){
+        $result = $this->db->get_where('jobposts',array('helper_id !=' => ''));
+        return $result->num_rows();
+    }    
+
+
 
 }

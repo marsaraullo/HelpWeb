@@ -23,7 +23,7 @@ include 'buttondata.php';
             <div class="box-body bg-gray">           
                 <div class="form-group">
                     <label for="roletasks">Tasks:</label>
-                    <textarea name="roletasks" id="roletasks" class="form-control" style="height:75px;"><?php echo $roletasks; ?></textarea>
+                    <textarea name="roletasks" id="roletasks" class="form-control" style="height:75px;" placeholder="Tasks"><?php echo $roletasks; ?></textarea>
                 </div>
             </div>
         </div>

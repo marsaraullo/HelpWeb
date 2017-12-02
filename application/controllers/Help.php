@@ -27,6 +27,13 @@ class Help extends CI_Controller {
         $this->load->view('login/footer_login');
 	}
 
+    function get_jobsmonitor(){
+        $this->load->model('jobpostmodel');
+        $data['status']['open'] = $this->jobpostmodel->count_all_open();
+        $data['status']['closed'] = $this->jobpostmodel->count_all_closed();
+        $this->load->view('jobposts/monitor',$data);
+    }
+
     function logout(){
         if (session_status()==PHP_SESSION_NONE) {
              session_start(); 

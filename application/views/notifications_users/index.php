@@ -1,57 +1,45 @@
-  <!-- Content Wrapper. Contains page content -->
-  <div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-  <section class="content-header">
-    <h1>
-    Notifications
-    </h1>
-    <ol class="breadcrumb">
-      <li class="active">Notifications</li>
-    </ol>
-  </section>
+<?php
+$output = '';
+if(count($notifications)>0){
+  foreach($notifications as $row){
+      $datetime1 = new DateTime();
+      $datetime2 = new DateTime($row['datetime']);
+      $interval = $datetime1->diff($datetime2);
+      $d = $interval->format('%a');
+      $h = $interval->format('%h');
+      $i = $interval->format('%i');
 
-  <!-- Main content -->
-  <section class="content">
-    <!-- Small boxes (Stat box) -->
-    <div class="row">
+      if($d>0){
+        $display_time = $d.'d';
+      }elseif($d<=0 && $h<=0){
+        $display_time = $i.'m';
+      }else{
+        $display_time = $h.'h';
+      }
 
-        <div class="col-lg-12 col-xs-12">
-            <div id="devices-chart"></div>
-        </div>
+      if (strlen($row['title']) > 19){
+        $item_name = substr($row['title'], 0, 18) . '...';
+      }else{
+        $item_name = $row['title'];
+      }
 
-        <div class="col-lg-12 col-xs-12">
-            <div id="analytics-chart"></div>
-        </div>
-      <!-- ./col -->
-    </div>      
-  </section>
-  <!-- /.content -->
-</div>
-<!-- /.content-wrapper -->
+      if($row['helper_id']!=""){
+        $status = '<i class="fa fa-circle text-red"></i>';
+      }else{
+        $status = '<i class="fa fa-circle text-green"></i>';
+      }
 
-<!-- Morris.js charts -->
-<script src="<?php echo base_url(); ?>resources/js/raphael/raphael.min.js"></script>
-<script src="<?php echo base_url(); ?>resources/js/morris.js/morris.min.js"></script>
+      $output .= '<li><strong><a href="'.site_url().'/jobposts_users/job/'.$row['id'].'"><h5>'.$status.' '.$item_name.'</strong> (P '.$row['min_cost'].' - P '.$row['max_cost'].') <small><span class="pull-right">'.$display_time.' ago</span></small></h5></a></li>';
+    }
+}else{
+  $output .= '<li><a href="'.site_url().'/jobposts_users">No notification found</a></li>';
+}
 
+$data = array(
+  'notification'   => $output,
+  'unseen_notification' => $count_notification
+);
 
-<script>
+echo json_encode($data);
 
-function refresh_devices(){
-$("#devices-chart").load('<?php echo site_url(); ?>/meshtv/dashboard_devices');
-//console.clear();
-setTimeout(refresh_devices, 5000);
-} 
-
-function refresh_analytics(){
-$("#analytics-chart").load('<?php echo site_url(); ?>/meshtv/dashboard_analytics');
-//console.clear();
-setTimeout(refresh_analytics, 5000);
-}   
-
-$(document).ready(function(){
-refresh_devices();
-refresh_analytics();
-
-});    
-
-</script>
+?>

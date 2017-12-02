@@ -1,57 +1,101 @@
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <section class="content-header">
-      <h1>
-      Job Posts
-      </h1>
-      <ol class="breadcrumb">
-        <li class="active">Job Posts</li>
-      </ol>
+  <!-- Content Header (Page header) -->
+  <section class="content-header">
+    <h1>My Job Posts</h1>
+    <ol class="breadcrumb">
+      <li class="active">My Job Posts</li>
+    </ol>
+  </section>
+
+  <!-- Main content -->
+  <section class="content">
+    <!-- Small boxes (Stat box) -->
+
+    <section class="content" id="record">
+            <?php
+            include('jobpostdata.php');
+            ?>
     </section>
 
-    <!-- Main content -->
-    <section class="content">
-      <!-- Small boxes (Stat box) -->
-      <div class="row">
+        <div class="well">
+                    <table id="datalist" class="display responsive nowrap" width="100%">
+                        <thead>
+                            <tr>
+                                <th width="5%" class="hidden-xs hidden-sm">ID</th>
+                                <th width="5%" class="hidden-xs hidden-sm">Date</th>
+                                <th width="10%">Title</th>
+                                <th width="10%" class="hidden-xs hidden-sm">Min cost</th>
+                                <th width="10%">Actual cost</th>
+                                <th width="10%" class="hidden-xs hidden-sm">Max cost</th>
+                                <th width="10%" class="hidden-xs hidden-sm">Asker</th>
+                                <th width="10%" class="hidden-xs hidden-sm">Status</th>
+                                <th width="5%">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+            </div>         
 
-          <div class="col-lg-12 col-xs-12">
-              <div id="devices-chart"></div>
-          </div>
-
-          <div class="col-lg-12 col-xs-12">
-              <div id="analytics-chart"></div>
-          </div>
-        <!-- ./col -->
-      </div>      
-    </section>
-    <!-- /.content -->
-  </div>
-  <!-- /.content-wrapper -->
-
-<!-- Morris.js charts -->
-<script src="<?php echo base_url(); ?>resources/js/raphael/raphael.min.js"></script>
-<script src="<?php echo base_url(); ?>resources/js/morris.js/morris.min.js"></script>
-
-
-<script>
-
-function refresh_devices(){
-  $("#devices-chart").load('<?php echo site_url(); ?>/meshtv/dashboard_devices');
-  //console.clear();
-  setTimeout(refresh_devices, 5000);
-} 
-
-function refresh_analytics(){
-  $("#analytics-chart").load('<?php echo site_url(); ?>/meshtv/dashboard_analytics');
-  //console.clear();
-  setTimeout(refresh_analytics, 5000);
-}   
-
+  </section>
+  <!-- /.content -->
+</div>
+<!-- /.content-wrapper -->
+<link rel="stylesheet" href="<?php echo base_url(); ?>resources/css/datatables.net/css/jquery.dataTables.min.css">
+<script src="<?php echo base_url(); ?>resources/js/datatables.net/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript">
+<!--
 $(document).ready(function(){
-  refresh_devices();
-  refresh_analytics();
+load_unseen_notification();  
 
-});    
+  $('#datalist').DataTable({
+      processing: true,
+      serverSide: true,
+      ajax: { url: '<?php echo site_url(); ?>/jobposts_users/get_data', type: 'POST' },
+      order: [[ 1, "desc" ]],
+      columns: [
+          {data:'id', className:"hidden-xs hidden-sm"},
+          {data:'datetime', className:"hidden-xs hidden-sm"},
+          {data:'title'},
+          {data:'min_cost', className:"hidden-xs hidden-sm"},
+          {data:'actual_cost'},
+          {data:'max_cost', className:"hidden-xs hidden-sm"},
+          {data:'asker_id', className:"hidden-xs hidden-sm"},
+          {data:'status', className:"hidden-xs hidden-sm"},
+          {data:'action'}
+      ]
+  });
 
-  </script>
+$(document).on('click', '.notifications', function(){
+$('.notification_count').html("");
+load_unseen_notification('yes');
+});
+
+
+});
+
+function view_record(id){
+  $.get("<?php echo site_url() . "/jobposts_users/update_jobpost/"; ?>"+id+"/1",'',function (datahtml){
+      $("#record").html(datahtml);
+      window.scrollTo(0,0);
+  });
+};
+function update_record(id){
+  $.post("<?php echo site_url() . "/jobposts_users/update_jobpost/"; ?>"+id,"id="+id,function (datahtml){
+      $("#record").html(datahtml);
+      window.scrollTo(0,0);
+  });
+};
+function delete_record(id){
+  if (confirm("Delete record id no. "+id+"?")){
+      $.get("<?php echo site_url() . "/jobposts_users/delete_jobpost/"; ?>"+id,'',function (retval){
+          if (retval == 'Record has been deleted.'){
+              window.location = "<?php echo site_url() . "/jobposts_users"; ?>";
+          } else {
+              alert('Failed to delete record.');
+          }
+      });
+  }
+};
+-->
+</script>

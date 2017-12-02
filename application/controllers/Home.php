@@ -7,7 +7,7 @@ class Home extends CI_Controller {
         $this->load->view('layouts/header');
 		$this->load->view('layouts/sidebar');
 		$this->load->view('home/index');
-		$this->load->view('layouts/footer');
+		$this->load->view('layouts/footer_home');
 	}
 
     function logout(){
@@ -30,6 +30,12 @@ class Home extends CI_Controller {
         redirect(site_url());
         exit;
     }
+
+    function get_jobsmonitor(){
+        $this->load->model('jobpostusermodel');
+        $data['recentjobs'] = $this->jobpostusermodel->get_all_recent_jobs(); 
+        $this->load->view('jobposts_users/monitor',$data);
+    }    
 
     
 }
