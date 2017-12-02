@@ -3,7 +3,7 @@
  * ----------
  */
 .skin-blue-light .main-header .navbar {
-  background-color: #D35400; /* Robin */
+  background-color: #3498db; /* Help_project: Uhack */
 }
 .skin-blue-light .main-header .navbar .nav > li > a {
   color: #ffffff;
@@ -29,7 +29,7 @@
   color: #fff;
 }
 .skin-blue-light .main-header .navbar .sidebar-toggle:hover {
-  background-color: #bd4b00; /* Robin */
+  background-color: #2980b9; /* Help_project: Uhack */
 }
 @media (max-width: 767px) {
   .skin-blue-light .main-header .navbar .dropdown-menu li.divider {
@@ -39,19 +39,19 @@
     color: #fff;
   }
   .skin-blue-light .main-header .navbar .dropdown-menu li a:hover {
-    background: #a84300;
+    background: #2980b9;
   }
 }
 .skin-blue-light .main-header .logo {
-  background-color: #bd4b00; /* Robin */
+  background-color: #2980b9; /* Help_project: Uhack */
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
 .skin-blue-light .main-header .logo:hover {
-  background-color: #D35400; /* Robin */
+  background-color: #3498db; /* Help_project: Uhack */
 }
 .skin-blue-light .main-header li.user-header {
-  background-color: #D35400; /* Robin */
+  background-color: #3498db; /* Help_project: Uhack */
 }
 .skin-blue-light .content-header {
   background: transparent;
@@ -59,7 +59,7 @@
 .skin-blue-light .wrapper,
 .skin-blue-light .main-sidebar,
 .skin-blue-light .left-side {
-  background-color: #f9fafc; /* Robin */
+  background-color: #f9fafc; /* Help_project: Uhack */
 }
 .skin-blue-light .main-sidebar {
   border-right: 1px solid #d2d6de;
@@ -79,21 +79,21 @@
 }
 .skin-blue-light .sidebar-menu > li > a {
   border-left: 3px solid transparent;
-  font-weight: 600; /* Robin */
+  font-weight: 600; /* Help_project: Uhack */
 }
 .skin-blue-light .sidebar-menu > li:hover > a,
 .skin-blue-light .sidebar-menu > li.active > a {
   color: #fff;
-  background: #D35400; /* Robin */
+  background: #3498db; /* Help_project: Uhack */
 }
 .skin-blue-light .sidebar-menu > li.active {
-  border-left-color: #D35400; /* Robin */
+  border-left-color: #3498db; /* Help_project: Uhack */
 }
 .skin-blue-light .sidebar-menu > li.active > a {
   font-weight: 600;
 }
 .skin-blue-light .sidebar-menu > li > .treeview-menu {
-  background: #D35400; /* Robin */
+  background: #3498db; /* Help_project: Uhack */
 }
 .skin-blue-light .sidebar a {
   color: #444444;
@@ -102,12 +102,12 @@
   text-decoration: none;
 }
 .skin-blue-light .sidebar-menu .treeview-menu > li > a {
-  color: #fff; /* Robin */
+  color: #fff; /* Help_project: Uhack */
 }
 .skin-blue-light .sidebar-menu .treeview-menu > li.active > a,
 .skin-blue-light .sidebar-menu .treeview-menu > li > a:hover {
-  color: #fff; /* Robin */
-  background: #bd4b00; /* Robin */
+  color: #fff; /* Help_project: Uhack */
+  background: #2980b9; /* Help_project: Uhack */
 }
 .skin-blue-light .sidebar-menu .treeview-menu > li.active > a {
   font-weight: 600;
@@ -155,10 +155,10 @@
   border-top-color: #d2d6de;
 }
 .skin-blue.layout-top-nav .main-header > .logo {
-  background-color: #bd4b00;
+  background-color: #3498db;
   color: #ffffff;
   border-bottom: 0 solid transparent;
 }
 .skin-blue.layout-top-nav .main-header > .logo:hover {
-  background-color: #bd4b00;
+  background-color: #3498db; /* Help_project: Uhack */
 }

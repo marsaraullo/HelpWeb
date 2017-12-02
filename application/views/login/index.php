@@ -1,13 +1,13 @@
 
     <div class="login-box">
-    <div class="login-logo">
-    <img src="<?php echo base_url(); ?>resources/images/banner.png" width="250px">
-    </div>
     <!-- /.login-logo -->
+    <div class="login-logo text-center">
+      <img src="<?php echo base_url(); ?>resources/images/help_banner.png" width="350px" alt="Help!">
+    </div>    
     <div class="login-box-body bg-gray">
       <p class="login-box-msg">Login</p>
 
-      <?php echo form_open('cricket/login'); ?>
+      <?php echo form_open('help/login'); ?>
         <div class="form-group">
           <input type="text" name="username" class="form-control" placeholder="Username" maxlength="20" required />
         </div>
@@ -25,7 +25,7 @@
     </div>
     <!-- /.login-box-body -->
       <div class="login-footer">
-      <strong>Copyright &copy; 2015 - <?php echo date("Y"); ?> <a href="http://bittelasia.com/index.php/site/" target="_blank">Bittel Asia</a>.</strong> All rights reserved.
+      <strong>Copyright &copy; <?php echo date("Y"); ?> <a href="#" target="_blank">Help!</a></strong> All rights reserved.
     </div>
   </div>
 

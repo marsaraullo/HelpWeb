@@ -3,10 +3,10 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-      Dashboard
+      Job Posts
       </h1>
       <ol class="breadcrumb">
-        <li class="active">Dashboard</li>
+        <li class="active">Job Posts</li>
       </ol>
     </section>
 

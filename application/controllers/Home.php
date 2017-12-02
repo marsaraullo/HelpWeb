@@ -1,30 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Help extends CI_Controller {
+class Home extends CI_Controller {
 
 	public function index(){
         $this->load->view('layouts/header');
 		$this->load->view('layouts/sidebar');
-		$this->load->view('help/index');
+		$this->load->view('home/index');
 		$this->load->view('layouts/footer');
-	}
-
-	public function login(){
-        if ($this->input->post('btn_submit')){
-            if ($this->userlogin->check_user()){
-				if($_SESSION['role_id']==1){
-					redirect('help');
-				}else{
-					redirect('home');	
-				}
-                exit;
-            }
-        }
-        $this->load->helper('form');
-        $this->load->view('login/header_login');
-        $this->load->view('login/index');
-        $this->load->view('login/footer_login');
 	}
 
     function logout(){
@@ -47,4 +30,6 @@ class Help extends CI_Controller {
         redirect(site_url());
         exit;
     }
+
+    
 }

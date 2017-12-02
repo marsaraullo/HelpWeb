@@ -1,25 +1,14 @@
-.banner-bg{
-	height: 72px; 
-	position: fixed; 
-	background-image: url('../images/banner-bg.jpg'); 
-	width: 100%; 
-	z-index: 1100; 
-	background-repeat: no-repeat; 
-	background-size:cover; 
-}
-
-.banner_logo img{   
-	width: 260px;
-	padding: 10px;  
+.login-logo{
+  margin: 0;
 }
 
 .btn-login{
-  background-color: #2175BC;
+  background-color: #3498db;
   color: #fff;
 }
 
 .btn-login:hover{
-  background-color: #1d69a9;
+  background-color: #2980b9;
   color: #fff;  
 }
 
