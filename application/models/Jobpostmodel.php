@@ -129,9 +129,30 @@ class Jobpostmodel extends CI_Model {
                 'asker_id' => $result2->lastname.', '.$result2->firstname,
                 'action' => '<a href="javascript:view_record(\''.$row['id'].'\')" title="View" class="btn btn-info btn-xs"><i class="fa fa-list-alt"></i></a>'
                 . '&nbsp;&nbsp;<a href="javascript:update_record(\''.$row['id'].'\')" title="Update" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>'
+                . '&nbsp;&nbsp;<a href="jobposts/job/'.$row['id'].'" title="Applicants" class="btn btn-success btn-xs"><i class="fa fa-users"></i></a>'
                 . '&nbsp;&nbsp;<a href="javascript:delete_record(\''.$row['id'].'\')" title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-times-circle"></i></a>');
         }
         return json_encode($data);
+    }
+
+    function get_jobpost_by_id($id){
+        $this->db->select('*');
+        $this->db->from('jobposts');
+        $this->db->join('users', 'jobposts.asker_id = users.id');
+        $this->db->where('jobposts.id', $id);
+        $result = $this->db->get();
+
+        //$result = $this->db->query("SELECT * FROM jobposts INNER JOIN users ON jobposts.asker_id = users.id WHERE jobposts.id = ".$id."");
+        return $result->row();
+    }
+
+    function get_jobapplicants_by_id($id){
+        $this->db->select('*');
+        $this->db->from('applicants');
+        $this->db->join('users', 'applicants.user_id = users.id');
+        $this->db->where('applicants.job_id', $id);
+        $result = $this->db->get();     
+        return $result->result();   
     }
 
 }

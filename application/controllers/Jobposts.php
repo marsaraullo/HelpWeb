@@ -80,7 +80,18 @@ class Jobposts extends CI_Controller {
         $this->load->model('jobpostmodel');
         echo $this->jobpostmodel->get_from_datatables('jobposts');
         exit;
-    }
+	}
+	
+    function job($id){	
+		$data['id'] = $id;
+		$this->load->model('jobpostmodel');
+		$data['jobdata'] = $this->jobpostmodel->get_jobpost_by_id($id);
+		$data['jobapplicants'] = $this->jobpostmodel->get_jobapplicants_by_id($id);
+        $this->load->view('layouts/header');
+		$this->load->view('layouts/sidebar');
+		$this->load->view('jobposts/job',$data);
+		$this->load->view('layouts/footer');
+    }	
 
     
 }
