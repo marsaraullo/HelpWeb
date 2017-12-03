@@ -90,7 +90,7 @@ class Jobposts_Users extends CI_Controller {
 		$data['jobapplicants'] = $this->jobpostusermodel->get_jobapplicants_by_id($id);
         $this->load->view('layouts/header');
 		$this->load->view('layouts/sidebar');
-		$this->load->view('jobposts/job',$data);
+		$this->load->view('jobposts_users/job',$data);
 		$this->load->view('layouts/footer_home');
 	}	
 	

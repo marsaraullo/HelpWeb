@@ -133,7 +133,7 @@ class Jobpostusermodel extends CI_Model {
                 'max_cost' => $row['max_cost'],
                 'asker_id' => $result2->lastname.', '.$result2->firstname,
                 'status' => $status,
-                'action' => '<a href="jobposts/job/'.$row['id'].'" title="Applicants" class="btn btn-success btn-xs"><i class="fa fa-users"></i></a>'
+                'action' => '<a href="jobposts_users/job/'.$row['id'].'" title="Applicants" class="btn btn-success btn-xs"><i class="fa fa-users"></i></a>'
                 . '&nbsp;&nbsp;<a href="javascript:view_record(\''.$row['id'].'\')" title="View" class="btn btn-info btn-xs"><i class="fa fa-list-alt"></i></a>'
                 . '&nbsp;&nbsp;<a href="javascript:update_record(\''.$row['id'].'\')" title="Update" class="btn btn-primary btn-xs"><i class="fa fa-pencil"></i></a>'
                 . '&nbsp;&nbsp;<a href="javascript:delete_record(\''.$row['id'].'\')" title="Delete" class="btn btn-danger btn-xs"><i class="fa fa-times-circle"></i></a>');
@@ -172,10 +172,11 @@ class Jobpostusermodel extends CI_Model {
     }    
 
     function get_all_recent_jobs(){
-        $this->db->select('jobposts.id, jobposts.datetime, jobposts.title, users.lastname, users.firstname');
+        $this->db->select('jobposts.id, jobposts.datetime, jobposts.title, users.lastname, users.firstname, jobposts.min_cost, jobposts.max_cost, jobposts.helper_id');
         $this->db->from('jobposts');
         $this->db->join('users', 'jobposts.asker_id = users.id');
         $this->db->where('asker_id !=',$_SESSION['user_id']); 
+        $this->db->order_by('jobposts.id','desc'); 
         $result = $this->db->get();
         return $result->result();
     }

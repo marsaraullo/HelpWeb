@@ -51,7 +51,15 @@
                     ?>
                     <tr>
                         <td><?php echo $row->lastname.', '.$row->firstname; ?></td>
-                        <td><a href="<?php echo site_url().'/jobposts/accept_applicant/'.$row->job_id; ?>/<?php echo $row->user_id;?>" class="btn btn-info">Hire!</a></td>
+                        <td>
+                            <?php
+                                    if($_SESSION['user_id'] != $row->user_id){
+                            ?>
+                            <a href="<?php echo site_url().'/jobposts_users/accept_applicant/'.$row->job_id; ?>/<?php echo $row->user_id;?>" class="btn btn-info">Hire!</a>
+                        <?php
+                            }
+                        ?>
+                        </td>
                     </tr>
                     <?php
                     }
